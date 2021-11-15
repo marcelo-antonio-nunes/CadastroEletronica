@@ -10,5 +10,6 @@ def limpa():
 def menu():
     print("""
 C)Cadastrar cliente
+L)Listar clientes
 S)sair
     """)

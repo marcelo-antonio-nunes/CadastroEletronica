@@ -46,3 +46,11 @@ Endereço : {lista[2]}
         except Error as e:
             print(f'Erro ao tentar inserir registro!\n -> {e}')
 
+    def listar_clientes(self):
+        for i in self.cursor.execute('select * from cliente'):
+            print(f'Id -> {i[0]}')
+            print(f'Nome -> {i[1]}')
+            print(f'Telefone -> {i[2]}')
+            print(f'Endereço -> {i[3]}')
+            print('='*40)
+

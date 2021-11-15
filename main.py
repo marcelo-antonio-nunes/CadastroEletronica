@@ -15,8 +15,13 @@ def main():
         lista.append(input('Nome: ').title())
         lista.append(input('Telefone: '))
         lista.append(input('Endereço: ').title())
-
         eletronica.inser_cliente(lista)
+    elif op2 == 's':
+        exit()
+    elif op2 == 'l':
+        limpa()
+        eletronica.listar_clientes()
+        input('\nEnter pra voltar')
 
 
 
@@ -24,4 +29,5 @@ def main():
 
 
 if __name__ == '__main__':
-   main()
+    while True:
+        main()
