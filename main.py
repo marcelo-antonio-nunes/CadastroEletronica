@@ -9,6 +9,7 @@ def main():
     eletronica = SQLHELPER(r'dbs\banco.db')
     limpa()
     eletronica.cria_tabela(TABELA_CLIENTE)
+    eletronica.cria_tabela(TABELA_APARELHO)
     menu()
     op2 = input(': ').lower()
     if op2 == 'c':
