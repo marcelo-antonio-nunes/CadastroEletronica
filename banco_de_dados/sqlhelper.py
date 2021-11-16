@@ -32,7 +32,7 @@ class SQLHELPER():
             limpa()
             print(f"""
 Os dados estão corretos? deseja inserir o cliente(a) {lista[0]} ? S/N
-============================================================{'='*len(lista[0])}
+==============================================================================={'='*len(lista[0])+50}
 
 Nome     : {lista[0]}
 Telefone : {lista[1]}
@@ -48,8 +48,8 @@ Endereço : {lista[2]}
 
     def listar_clientes(self):
         for i in self.cursor.execute('select * from cliente'):
-            print(f'Id -> {i[0]}')
-            print(f'Nome -> {i[1]}')
+            print(f'Id       -> {i[0]}')
+            print(f'Nome     -> {i[1]}')
             print(f'Telefone -> {i[2]}')
             print(f'Endereço -> {i[3]}')
             print('='*40)
