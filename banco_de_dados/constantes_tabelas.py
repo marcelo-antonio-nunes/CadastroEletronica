@@ -31,3 +31,7 @@ TABELA_APARELHO = """ CREATE TABLE IF NOT EXISTS aparelho(
      acessorios VARCHAR(50), observacao VARCHAR(200), data_entrada DATE)
     """
 
+TABELA_ORCAMENTO = """CREATE TABLE IF NOT EXISTS orcamento(id_aparelho INTEGER NOT NULL unique,
+    defeito_reclamado VARCHAR(100) NOT NULL, defeito VARCHAR(100), componentes VARCHAR(100), gastos REAL,
+    mao_de_obra REAL, aprovado VARCHAR(4), pronto VARCHAR(4), saida DATE)"""
+
