@@ -36,17 +36,22 @@ def main():
                 opcao = int(input('     Id: '))
                 eletronica.lista_cliente(opcao)
             elif op4 == 'n':
-                opcao = input('     Nome:')
+                limpa()
+                opcao = input('        Nome:')
                 eletronica.lista_cliente(opcao.title())
             elif op4 =='t':
-                opcao = input('     Telefone: ')
+                limpa()
+                opcao = input('        Telefone: ')
                 eletronica.lista_cliente(opcao)
             elif  op4 == 'f':
+                limpa()
                 eletronica.listar_clientes()
         elif op3 == 'o':
+            limpa()
             id_ap = input('       Id: ')
             eletronica.lista_orcamento(id_ap) 
         elif op3 == 'a':
+            limpa()
             id_ap = input('       Id: ')
             eletronica.lista_aparelho(id_ap) 
             
@@ -57,11 +62,8 @@ def main():
             eletronica.editar_orcamento()
         elif ope == 'c':
             limpa()
-            print(f"""        {blue}N{reset_color}){green}Editar Nome
-            {blue}T{reset_color}){green}Editar Telefone
-            {blue}E{reset_color}){green}Editar Endereço{reset_color}
-    """)
-            eletronica.editar_cliente(input('        : ').lower(),int(input('        Id: ')))
+            menu5()
+            eletronica.editar_cliente(input('            : ').lower(),int(input('            Id: ')))
     elif op2 == 'a':
         limpa()
         lista_ap.append(input("     Id do cliente     :"))

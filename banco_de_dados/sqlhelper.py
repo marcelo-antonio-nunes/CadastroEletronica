@@ -25,7 +25,9 @@ class SQLHELPER():
                 VALUES(?,?,?)",(lista))
             limpa()
             print(f"""
-            {blue} DADOS CLIENTE(A) SALVAR {lista[0]} ? S/N{cyan}{'='*len(lista[0])}{reset_color}
+            {blue}DADOS CLIENTE(A)
+            SALVAR {lista[0]} ? S/N{cyan}
+            ============={'='*len(lista[0])}{reset_color}
             {blue}Nome     {green}:{reset_color} {lista[0]}
             {blue}Telefone {green}:{reset_color} {lista[1]}
             {blue}Endereço {green}:{reset_color} {lista[2]}
@@ -42,7 +44,7 @@ class SQLHELPER():
         limpa()
         for i in self.cursor.execute('select * from cliente'):
             print(f'    {blue}Id      {green} ->{reset_color} {i[0]}{blue}' )
-            print(f'    Nome     {green}->{reset_color} {i[1]}{blue}'   )
+            print(f'        Nome     {green}->{reset_color} {i[1]}{blue}'   )
             print(f'    Telefone {green}->{reset_color} {i[2]}{blue}'   )
             print(f'    Endereço {green}->{reset_color} {i[3]}{cyan}')
             print('    '+'='*30,reset_color)
@@ -50,13 +52,13 @@ class SQLHELPER():
     def editar_cliente(self,campo,id):
         try:
             if campo == 'n':
-                nome = input("        Nome: ").title()
+                nome = input("            Nome: ").title()
                 self.cursor.execute(f"update cliente set nome = '{nome}' where id='{id}'")
             elif campo == 't':
-                tel = input("        Telefone: ")
+                tel = input("            Telefone: ")
                 self.cursor.execute(f"update cliente set telefone = '{tel}' where id='{id}'")
             elif campo == 'e':
-                endereco = input("        Endereco: ").title()
+                endereco = input("            Endereco: ").title()
                 self.cursor.execute(f"update cliente set endereco = '{endereco}' where id='{id}'")
             self.conn.commit()
         except:
@@ -89,34 +91,34 @@ class SQLHELPER():
             print('             Aparelho cadastrado com sucesso!!')
 
     def lista_cliente(self,opcao):
-        # try:
-            self.cursor.execute(f"select * from cliente where id='{opcao}'")
-            limpa()
-            for c in self.cursor.fetchall():
-                print(f"""
-        {blue}ID       {green}->{reset_color} {c[0]}{blue}
-        Nome     {green}->{reset_color} {c[1]}{blue}
-        Telefone {green}->{reset_color} {c[2]}{blue}
-        Endereço {green}->{reset_color} {c[3]}{blue} 
-                            """)
-            self.cursor.execute(f"select * from cliente where nome = '{opcao}'")
-            for c in self.cursor.fetchall():
-                print(f"""
-        ID       {green}->{reset_color} {c[0]}{blue}
-        Nome     {green}->{reset_color} {c[1]}{blue}
-        Telefone {green}->{reset_color} {c[2]}{blue}
-        Endereço {green}->{reset_color} {c[3]}{blue} 
-                            """)
-            self.cursor.execute(f"select * from cliente where telefone='{opcao}'")
-            for c in self.cursor.fetchall():
-                print(f"""
-        ID       {green}->{reset_color} {c[0]}{blue}
-        Nome     {green}->{reset_color} {c[1]}{blue}
-        Telefone {green}->{reset_color} {c[2]}{blue}
-        Endereço {green}->{reset_color} {c[3]} 
-                            """)
-        # except:
-        #     print('         Opção invalida!')
+        try:
+                self.cursor.execute(f"select * from cliente where id='{opcao}'")
+                limpa()
+                for c in self.cursor.fetchall():
+                    print(f"""
+            {blue}ID       {green}->{reset_color} {c[0]}{blue}
+            Nome     {green}->{reset_color} {c[1]}{blue}
+            Telefone {green}->{reset_color} {c[2]}{blue}
+            Endereço {green}->{reset_color} {c[3]}{blue} 
+                                """)
+                self.cursor.execute(f"select * from cliente where nome like '%{opcao}%'")
+                for c in self.cursor.fetchall():
+                    print(f"""
+            {blue}ID       {green}->{reset_color} {c[0]}{blue}
+            Nome     {green}->{reset_color} {c[1]}{blue}
+            Telefone {green}->{reset_color} {c[2]}{blue}
+            Endereço {green}->{reset_color} {c[3]}{blue} 
+                                """)
+                self.cursor.execute(f"select * from cliente where telefone='{opcao}'")
+                for c in self.cursor.fetchall():
+                    print(f"""
+            ID       {green}->{reset_color} {c[0]}{blue}
+            Nome     {green}->{reset_color} {c[1]}{blue}
+            Telefone {green}->{reset_color} {c[2]}{blue}
+            Endereço {green}->{reset_color} {c[3]} 
+                                """)
+        except:
+            print('         Opção invalida!')
 
     
 
@@ -174,7 +176,7 @@ class SQLHELPER():
                 ========={'='*len(str(Cliente))}{reset_color}""")
             except TypeError as e:
                 print(f"""              {red}NÃO A APARELHO CADASTRADO EM NOME DE -> {str(Cliente).replace(",","")
-                .replace("(","").replace(")","").replace("'","").upper()}!""")
+                .replace("(","").replace(")","").replace("'","").upper()}{reset_color}!""")
 
 
 
@@ -227,6 +229,8 @@ class SQLHELPER():
         {blue}P{reset_color})Editar pronto
         {blue}S{reset_color})Editar data de saida\n\n
         :""")
+
+        
         if campo == 'd':
             self.cursor.execute(f"update orcamento set defeito = '{input('         Defeito:')}' where id_aparelho ='{id}'  ")
         elif campo == 'c':

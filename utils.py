@@ -42,7 +42,7 @@ def menu3():
     print(f"""
         {magenta}F{reset_color}){green}->{reset_color}Listar todos clientes
         {magenta}I{reset_color}){green}->{reset_color}Localizar por Id
-        {magenta}N{reset_color}){green}->{reset_color}Localizar por Nome completo
+        {magenta}N{reset_color}){green}->{reset_color}Localizar por Nome
         {magenta}T{reset_color}){green}->{reset_color}Localizar por Telefone
     """)
 
@@ -55,3 +55,9 @@ def menu4():
     
         :""")
     return res
+
+def menu5():
+    print(f"""            {blue}N{reset_color}){green}Editar Nome
+            {blue}T{reset_color}){green}Editar Telefone
+            {blue}E{reset_color}){green}Editar Endereço{reset_color}
+    """)
