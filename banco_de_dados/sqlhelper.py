@@ -118,23 +118,92 @@ class SQLHELPER():
         except:
             print('         Opção invalida!')
 
-    def lista_aparelho(self,id_aparelho):
-        limpa()
-        for c in self.cursor.execute(f"select nome from cliente where id ='{id_aparelho}'"):
-            Cliente = c
-        for a in self.cursor.execute(f"select * from aparelho where id_cliente = '{id_aparelho}' "):
-            print(f"""
-        {blue}Os              {green}->{reset_color} {a[0]}{blue}
-        Cliente         {green}->{reset_color} {str(Cliente).replace(",","").replace("(","").replace(")","").replace("'","")}{blue}
-        Tipo            {green}->{reset_color} {a[2]}{blue}
-        Marca           {green}->{reset_color} {a[3]}{blue}
-        Modelo          {green}->{reset_color} {a[4]}{blue}
-        Acessorios      {green}->{reset_color} {a[5]}{blue}
-        Observação      {green}->{reset_color} {a[6]}{blue}
-        Data de entrada {green}->{reset_color} {a[7]}{cyan}
-        ========={'='*len(str(Cliente))}{reset_color}""")
+    # def lista_aparelho(self,id_aparelho):
+    #     limpa()
+    #     orc = self.cursor.execute(f"select * from orcamento where id_aparelho='{id_aparelho}'")
+    #     for i in orc.fetchall():
+    #         defeito_reclamado = i[1]
+    #         defeito = i[2]
+    #         componentes = i[3]
+    #         gasto = i[4]
+    #         mao = i[5]
+    #         pronto = i[6]
+    #         saida = i[7]
+
+    #     for c in self.cursor.execute(f"select nome from cliente where id ='{id_aparelho}'"):
+    #         Cliente = c
+    #     for a in self.cursor.execute(f"select * from aparelho where id_cliente = '{id_aparelho}' "):
+    #         print(f"""
+    #     {blue}Os               {green}->{reset_color} {a[0]}{blue}
+    #     Cliente          {green}->{reset_color} {str(Cliente).replace(",","").replace("(","").replace(")","").replace("'","")}{blue}
+    #     Tipo             {green}->{reset_color} {a[2]}{blue}
+    #     Marca            {green}->{reset_color} {a[3]}{blue}
+    #     Modelo           {green}->{reset_color} {a[4]}{blue}
+    #     Acessorios       {green}->{reset_color} {a[5]}{blue}
+    #     Observação       {green}->{reset_color} {a[6]}{blue}
+    #     Data de entrada  {green}->{reset_color} {a[7]}{cyan}
+    #     =================ORÇAMENTO========================={blue}
+    #     Defeito reclamado{green}->{reset_color} {i[1]}{blue}
+    #     Defeito          {green}->{reset_color} {i[2]}{blue}
+    #     Componentes      {green}->{reset_color} {i[3]}{blue}
+    #     Gasto            {green}->{reset_color} {i[4]}{blue}
+    #     Mão de obra      {green}->{reset_color} {i[5]}{blue}
+    #     Pronto           {green}->{reset_color} {i[6]}{blue}
+    #     Data de saida    {green}->{reset_color} {i[7]}{cyan}
+    #     ========={'='*len(str(Cliente))}{reset_color}""")
 #=====================================================================================
 
+
+    def lista_aparelho(self,id_aparelho):
+            limpa()
+            # try:
+            i=0
+            orc = self.cursor.execute(f"select * from orcamento where id_aparelho='{id_aparelho}'")
+            for i in orc.fetchall():
+                defeito_reclamado = i[1]
+                defeito = i[2]
+                componentes = i[3]
+                gasto = i[4]
+                mao = i[5]
+                pronto = i[6]
+                saida = i[7]
+
+            for c in self.cursor.execute(f"select nome from cliente where id ='{id_aparelho}'"):
+                Cliente = c
+            for a in self.cursor.execute(f"select * from aparelho where id_cliente = '{id_aparelho}' "):
+                print(f"""
+            {blue}Os               {green}->{reset_color} {a[0]}{blue}
+            Cliente          {green}->{reset_color} {str(Cliente).replace(",","").replace("(","").replace(")","").replace("'","")}{blue}
+            Tipo             {green}->{reset_color} {a[2]}{blue}
+            Marca            {green}->{reset_color} {a[3]}{blue}
+            Modelo           {green}->{reset_color} {a[4]}{blue}
+            Acessorios       {green}->{reset_color} {a[5]}{blue}
+            Observação       {green}->{reset_color} {a[6]}{blue}
+            Data de entrada  {green}->{reset_color} {a[7]}{cyan}
+            =================ORÇAMENTO========================={blue}
+            
+           
+            ========={'='*len(str(Cliente))}{reset_color}""")
+            # except :
+            #     pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#======================================================================================
     def orcamento(self):
         lista =[]
         try:
