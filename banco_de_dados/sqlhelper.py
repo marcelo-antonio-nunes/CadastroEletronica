@@ -44,7 +44,7 @@ class SQLHELPER():
         limpa()
         for i in self.cursor.execute('select * from cliente'):
             print(f'    {blue}Id      {green} ->{reset_color} {i[0]}{blue}' )
-            print(f'        Nome     {green}->{reset_color} {i[1]}{blue}'   )
+            print(f'    Nome     {green}->{reset_color} {i[1]}{blue}'   )
             print(f'    Telefone {green}->{reset_color} {i[2]}{blue}'   )
             print(f'    Endereço {green}->{reset_color} {i[3]}{cyan}')
             print('    '+'='*30,reset_color)
@@ -125,9 +125,6 @@ class SQLHELPER():
     def lista_orcamento(self,id_aparelho):
             limpa()
             lts = []
-            TEM_DADOS = self.cursor.execute("""select case when count(*) > 2 then "Tem dados" else "vazia" end as verificar from orcamento""")
-            print(TEM_DADOS)
-            input("Enter")
             try:
                 orc = self.cursor.execute(f"""select *from orcamento
                 where orcamento.id_aparelho ='{id_aparelho}'""")
@@ -145,7 +142,7 @@ class SQLHELPER():
                 saida = lts[8]
                 print(f"""
                 
-                ==========================ORÇAMENTO========================={blue}
+                {cyan}===================={green} ORÇAMENTO{cyan} ======================={blue}
                 # Ordem de serviço {green}->{reset_color} {ordem_servico}{blue}
                 # Defeito reclamado{green}->{reset_color} {defeito_reclamado}{blue}
                 # Defeito          {green}->{reset_color} {defeito}{blue}
@@ -154,9 +151,9 @@ class SQLHELPER():
                 # Mão de obra      {green}->{reset_color} {mao}{blue}
                 # Pronto           {green}->{reset_color} {pronto}{blue}
                 # Data de saida    {green}->{reset_color} {saida}{cyan}
-                # ======================================={reset_color}""")
+                # ==================================================={reset_color}""")
             except Exception as e:
-                print(f"""              {red}NÃO A APARELHO ORÇADO COM ESSA ORDEM DE SERVIÇO!""")
+                print(f"""          {red}NÃO A APARELHO ORÇADO COM ESSA ORDEM DE SERVIÇO!""")
     #========================================================================================
 
     def lista_aparelho(self,id_aparelho):
@@ -233,7 +230,7 @@ class SQLHELPER():
         {blue}S{reset_color})Editar data de saida\n\n
         :""")
 
-
+        
         if campo == 'd':
             self.cursor.execute(f"update orcamento set defeito = '{input('         Defeito:')}' where id_aparelho ='{id}'  ")
         elif campo == 'c':

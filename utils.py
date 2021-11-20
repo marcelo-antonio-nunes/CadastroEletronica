@@ -19,7 +19,7 @@ def limpa():
 def menu():
     limpa()
     print(f"""
-            {blue}ELETRONICA JN{reset_color}
+            {blue}ELETRONICA {reset_color}
 
         {blue}C{reset_color}){red} -> {reset_color}Cadastrar cliente
         {blue}L{reset_color}){red} -> {reset_color}Listar clientes

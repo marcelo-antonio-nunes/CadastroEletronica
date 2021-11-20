@@ -55,7 +55,7 @@ def main():
             id_ap = input('       Id: ')
             eletronica.lista_aparelho(id_ap) 
             
-        input(f'        {reset_color}\n              Enter pra voltar')
+        input(f'        {reset_color}\n                 Enter pra voltar')
     elif op2 == 'e':
         ope = menu4()
         if ope == 'o':
