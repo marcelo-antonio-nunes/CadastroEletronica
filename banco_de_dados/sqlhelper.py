@@ -125,6 +125,9 @@ class SQLHELPER():
     def lista_orcamento(self,id_aparelho):
             limpa()
             lts = []
+            TEM_DADOS = self.cursor.execute("""select case when count(*) > 2 then "Tem dados" else "vazia" end as verificar from orcamento""")
+            print(TEM_DADOS)
+            input("Enter")
             try:
                 orc = self.cursor.execute(f"""select *from orcamento
                 where orcamento.id_aparelho ='{id_aparelho}'""")
@@ -230,7 +233,7 @@ class SQLHELPER():
         {blue}S{reset_color})Editar data de saida\n\n
         :""")
 
-        
+
         if campo == 'd':
             self.cursor.execute(f"update orcamento set defeito = '{input('         Defeito:')}' where id_aparelho ='{id}'  ")
         elif campo == 'c':
