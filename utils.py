@@ -34,7 +34,7 @@ def menu_plincipal():
 def menu_listar():
   logo()
   print(f"""
-  {magenta}1{reset_color}){green}->{reset_color}Listar Clientes
+  {magenta}1{reset_color}){green}->{reset_color}Listar Cliente
   {magenta}2{reset_color}){green}->{reset_color}Listar Aparelho
   {magenta}3{reset_color}){green}->{reset_color}Listar Orçamento
     """)
@@ -53,7 +53,7 @@ def menu_listar_por():
 def menu_editar():
   logo()
   res = input(f"""
-  {magenta}1{reset_color}){green}->{reset_color}Editar clientes
+  {magenta}1{reset_color}){green}->{reset_color}Editar cliente
   {magenta}2{reset_color}){green}->{reset_color}Editar Orçamento
   {magenta}3{reset_color}){green}->{reset_color}Editar Aparelho
   :""")
